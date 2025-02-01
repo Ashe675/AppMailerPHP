@@ -7,12 +7,14 @@ use Dotenv\Dotenv;
 
 require "vendor/autoload.php";
 
-// Inicializar dotenv
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
 var_dump($_ENV['MAIL_USERNAME']);
 var_dump("VARS");
+
+
+// Inicializar dotenv
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 function sendMail($fromEmail, $fromName, $subject, $body, $isHtml = false)
 {
