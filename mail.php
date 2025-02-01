@@ -11,6 +11,8 @@ require "vendor/autoload.php";
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+var_dump($_ENV['MAIL_USERNAME']);
+
 function sendMail($fromEmail, $fromName, $subject, $body, $isHtml = false)
 {
     $mail = new PHPMailer(true);
