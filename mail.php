@@ -7,14 +7,11 @@ use Dotenv\Dotenv;
 
 require "vendor/autoload.php";
 
-
-var_dump($_ENV['MAIL_USERNAME']);
-var_dump("VARS");
-
-
-// Inicializar dotenv
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// Verificar si estamos en producción y solo cargar el .env en local
+if (getenv('APP_ENV') !== 'production') {
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();  // Cargar el archivo .env solo si no estamos en producción
+}
 
 function sendMail($fromEmail, $fromName, $subject, $body, $isHtml = false)
 {
